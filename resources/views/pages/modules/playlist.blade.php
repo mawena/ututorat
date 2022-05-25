@@ -24,8 +24,8 @@
                     <a href="{{ route('playlist_movies', $playlist->id) }}" class="follow-btn"><i
                             class="fa "></i>Movies</a>
                     {{-- route('watch',2) 2 is the first movie of the playlist --}}
-                    <a href="{{ route('watch', $playlist->movies) }}" class="watch-btn"><span>Watch All</span> <i
-                            class="fa fa-angle-right"></i></a>
+                    {{-- <a href="{{ route('watch', $playlist->movies) }}" class="watch-btn"><span>Watch All</span> <i
+                            class="fa fa-angle-right"></i></a> --}}
                 </div>
             </div>
         </div>

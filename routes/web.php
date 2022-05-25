@@ -64,7 +64,7 @@ Route::prefix('account')->group(function(){
 
 });
 
-Route::get('watch/{movie_id}',[MainController::class, 'watch'])->name('watch');
+Route::middleware('auth')->get('watch/{movie_id}',[MainController::class, 'watch'])->name('watch');
 
 Route::middleware('tutor')->prefix('tutor_dashboard/{user_id}')->group(function(){
 
