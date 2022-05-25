@@ -14,7 +14,7 @@
                     <div class="breadcrumb__links">
                         <a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a>
                         <a href="{{ route('categories') }}">Categories</a>
-                        <a href="{{ route(Str::lower($movie->category->title)) }}">{{ $movie->category->title }}</a>
+                        <a href="{{ route(Str::replace(' ','_',Str::lower($movie->category->title))) }}">{{ $movie->category->title }}</a>
                         <span>{{ $movie->title }}</span>
                     </div>
                 </div>
