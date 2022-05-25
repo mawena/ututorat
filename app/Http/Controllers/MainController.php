@@ -199,8 +199,13 @@ class MainController extends Controller
 
     public function playlist_movies($request)
     {
+        $movies = [];
+        foreach(Playlists_movie::all()->where('playlist_id', $request) as $playlist_movie){
+            $movies[] = ($playlist_movie->movie);
+        }
+
         return view('pages.playlist.playlist_movies', [
-            'movies' => Playlists_movie::all()->where('playlist_id', $request),
+            'playlist_movies' => $movies,
             'playlist' => Playlist::find($request),
         ]);
     }

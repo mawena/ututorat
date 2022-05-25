@@ -33,5 +33,8 @@ class Movie extends Model
         return $this->belongsTo(Playlist::class);
     }
 
+    public function playlist_movie(){
+        return $this->belongsTo(Playlist_movie::class);
+    }
 
 }

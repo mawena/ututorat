@@ -25,7 +25,7 @@
     <section class="blog spad">
         <div class="container">
             <div class="row">
-                @foreach ($playlist->movies as $movie)
+                @foreach ($playlist_movies as $movie)
                     @include('pages.modules.movie', ['movie' => $movie])
                 @endforeach
             </div>
