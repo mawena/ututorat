@@ -17,7 +17,8 @@ class Tutor
      */
     public function handle(Request $request, Closure $next)
     {
-        dd($request);
-        return $next($request);
+        if(Auth::user()->isTutor)
+            return $next($request);
+        return redirect(route('account/account_upgrade'));
     }
 }

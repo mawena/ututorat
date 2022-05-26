@@ -31,7 +31,7 @@
                             </ul>
                         @else
                             <ul>
-                                <li @if (Route::is('homepage') || Str::contains(url()->current(), 'home') ) echo class='active' @endif><a
+                                <li @if (Route::is('homepage') || Str::contains(url()->current(), 'home')) echo class='active' @endif><a
                                         href="{{ route('homepage') }}">Homepage</a></li>
                                 <li @if (Str::contains(url()->current(), 'categories')) echo class='active' @endif>
                                     <a href="{{ route('categories') }}">Categories<span
@@ -97,7 +97,7 @@
                                 @auth
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
+                                            document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -105,11 +105,19 @@
                                             @csrf
                                         </form>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('account/account_upgrade') }}">
-                                            Become a tutor
-                                        </a>
-                                    </li>
+                                    @if (Auth::user()->isTutor)
+                                        <li>
+                                            <a href="{{ route('activities') }}">
+                                                Your dashboard
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('account/account_upgrade') }}">
+                                                Become a tutor
+                                            </a>
+                                        </li>
+                                    @endif
                                 @endauth
                                 @guest
                                     <li @if (Route::is('login')) echo class='dropdown_active_item' @endif>

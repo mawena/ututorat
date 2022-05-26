@@ -72,7 +72,7 @@ Route::middleware('auth')->get('account_upgrade', [MainController::class, 'accou
 
 Route::middleware('auth')->get('watch/{movie_id}',[MainController::class, 'watch'])->name('watch');
 
-Route::middleware('tutor')->prefix('tutor_dashboard/{user_id}')->group(function(){
+Route::middleware('tutor')->prefix('tutor_dashboard')->group(function(){
 
     Route::get('/', function(){
         return view('pages.tutors_pages.activities');
