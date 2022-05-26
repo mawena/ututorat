@@ -105,6 +105,11 @@
                                             @csrf
                                         </form>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('account/account_upgrade') }}">
+                                            Become a tutor
+                                        </a>
+                                    </li>
                                 @endauth
                                 @guest
                                     <li @if (Route::is('login')) echo class='dropdown_active_item' @endif>

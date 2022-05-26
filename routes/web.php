@@ -62,7 +62,13 @@ Route::prefix('account')->group(function(){
         return view('pages.signs.forgot');
     })->name('account/forgot');
 
+    Route::get('account_upgrade', function(){
+        return view('pages.signs.account_upgrade');
+    })->name('account/account_upgrade');
+
 });
+
+Route::middleware('auth')->get('account_upgrade', [MainController::class, 'account_upgrade'])->name('account_upgrade');
 
 Route::middleware('auth')->get('watch/{movie_id}',[MainController::class, 'watch'])->name('watch');
 

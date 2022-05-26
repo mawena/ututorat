@@ -210,6 +210,29 @@ class MainController extends Controller
         ]);
     }
 
+    public function account_upgrade(){
+        $user = Auth::user();
+        $user->isTutor = 1;
+        $user->update();
+        return view('pages.tutors_pages.activities', [
+            'categories' => [
+                [
+                    'name' => 'new movies',
+                    'data' => Movie::all()->sortBy('created_at')->where('user_id',$user->id)->take(7)
+                ],
+                [
+                    'name' => 'new playlists',
+                    'data' => Playlist::all()->sortBy('created_at')->where('user_id',$user->id)->take(5),
+                    'alone' => false
+                ],
+                [
+                    'name' => 'recently updated',
+                    'data' => Movie::all()->sortBy('updated_at')->where('user_id',$user->id)->take(7)
+                ],
+            ],
+        ]);
+    }
+
     public function watch(Request $request)
     {
         $old_view = View::all()->where('user_id', Auth::user()->id)
