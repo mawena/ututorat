@@ -62,7 +62,7 @@
                         <div class="section-title">
                             <h5>Your Comment</h5>
                         </div>
-                        <form action="{{ route('comment.store') }}">
+                        <form method="POST" action="{{ route('comment.store', $movie->id) }}">
                             <textarea placeholder="Your Comment"class="input-text" name="content" required style="color:#0B0C2A"></textarea>
                             <button type="submit"><i class="fa fa-location-arrow"></i>Post</button>
                         </form>

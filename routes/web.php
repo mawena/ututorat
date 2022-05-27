@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
@@ -92,7 +93,7 @@ Route::middleware('tutor')->prefix('tutor_dashboard')->group(function(){
 
 });
 
-Route::post('comment.create',[Comment::class, 'store'])->name('comment.store');
+Route::middleware('auth')->post('comment.create/{movie_id}',[CommentController::class, 'store'])->name('comment.store');
 
 Route::resource('File',FileController::class);
 

@@ -38,7 +38,10 @@ class CommentController extends Controller
     {
         $comment = new Comment();
         $comment->content = $request->content;
-        // $comment->user_id = Auth::user()->id;
+        $comment->user_id = Auth::user()->id;
+        $comment->movie_id = $request->movie_id;
+        $comment->save();
+        return redirect(route('watch', $request->movie_id));
     }
 
     /**
