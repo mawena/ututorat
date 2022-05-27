@@ -39,11 +39,11 @@
                         <div class="section-title">
                             <h5>Next Movies</h5>
                         </div>
-                        @foreach ($movie->playlist ?? [] as $movie)
-                            <a href="{{ route('watch',$movie->id) }}">{{ $movie->title }}</a>
+                        @foreach ($movie->playlist ?? [] as $movieTmp)
+                            <a href="{{ route('watch', $movieTmp->id) }}">{{ $movieTmp->title }}</a>
                         @endforeach
-                        @foreach ($other ?? [] as $movie)
-                            <a href="{{ route('watch',$movie->id) }}">{{ $movie->title }}</a>
+                        @foreach ($other ?? [] as $movieTmp)
+                            <a href="{{ route('watch', $movieTmp->id) }}">{{ $movieTmp->title }}</a>
                         @endforeach
                     </div>
                 </div>
@@ -54,8 +54,8 @@
                         <div class="section-title">
                             <h5>Comments</h5>
                         </div>
-                        @foreach ($movie->comments ?? [] as $comment)
-                            @include('pages.modules.comment',['comment' => $comment])
+                        @foreach ($movie->comments ?? [] as $commentTmp)
+                            @include('pages.modules.comment', ['comment' => $commentTmp])
                         @endforeach
                     </div>
                     <div class="anime__details__form">
@@ -63,7 +63,17 @@
                             <h5>Your Comment</h5>
                         </div>
                         <form method="POST" action="{{ route('comment.store', $movie->id) }}">
-                            <textarea placeholder="Your Comment"class="input-text" name="content" required style="color:#0B0C2A"></textarea>
+                            @csrf
+                            <textarea placeholder="Your Comment" class="input-text" name="content" required style="color:#0B0C2A"></textarea>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <button type="submit"><i class="fa fa-location-arrow"></i>Post</button>
                         </form>
                     </div>

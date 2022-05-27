@@ -34,14 +34,18 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, int $id)
     {
-        $comment = new Comment();
-        $comment->content = $request->content;
-        $comment->user_id = Auth::user()->id;
-        $comment->movie_id = $request->movie_id;
-        $comment->save();
-        return redirect(route('watch', $request->movie_id));
+        $requestData = $request->all();
+        $validated = $request->validate([
+            'content' => 'required|min:3|max:255'
+        ]);
+
+        $requestData["user_id"] = Auth::user()->id;
+        $requestData["commentable_id"] = $id;
+        $requestData["commentable_type"] = "App\Models\Movie";
+        Comment::create($requestData);
+        return redirect(route('watch', $id));
     }
 
     /**

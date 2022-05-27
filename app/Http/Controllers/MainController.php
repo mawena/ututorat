@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\View;
 use App\Models\Movie;
 use App\Models\Comment;
@@ -200,7 +201,7 @@ class MainController extends Controller
     public function playlist_movies($request)
     {
         $movies = [];
-        foreach(Playlists_movie::all()->where('playlist_id', $request) as $playlist_movie){
+        foreach (Playlists_movie::all()->where('playlist_id', $request) as $playlist_movie) {
             $movies[] = ($playlist_movie->movie);
         }
 
@@ -210,24 +211,25 @@ class MainController extends Controller
         ]);
     }
 
-    public function account_upgrade(){
-        $user = Auth::user();
+    public function account_upgrade()
+    {
+        $user = User::find(Auth::user()->id);
         $user->isTutor = 1;
         $user->update();
         return view('pages.tutors_pages.activities', [
             'categories' => [
                 [
                     'name' => 'new movies',
-                    'data' => Movie::all()->sortBy('created_at')->where('user_id',$user->id)->take(7)
+                    'data' => Movie::all()->sortBy('created_at')->where('user_id', $user->id)->take(7)
                 ],
                 [
                     'name' => 'new playlists',
-                    'data' => Playlist::all()->sortBy('created_at')->where('user_id',$user->id)->take(5),
+                    'data' => Playlist::all()->sortBy('created_at')->where('user_id', $user->id)->take(5),
                     'alone' => false
                 ],
                 [
                     'name' => 'recently updated',
-                    'data' => Movie::all()->sortBy('updated_at')->where('user_id',$user->id)->take(7)
+                    'data' => Movie::all()->sortBy('updated_at')->where('user_id', $user->id)->take(7)
                 ],
             ],
         ]);
@@ -236,9 +238,9 @@ class MainController extends Controller
     public function watch(Request $request)
     {
         $old_view = View::all()->where('user_id', Auth::user()->id)
-        ->where('viewable_id', $request->movie_id)
+            ->where('viewable_id', $request->movie_id)
             ->where('viewable_type', 'App\Models\Movie');
-        if(count($old_view) == 0){
+        if (count($old_view) == 0) {
             $view = new View;
             $view->user_id = Auth::user()->id;
             $view->viewable_id = $request->movie_id;
@@ -247,7 +249,7 @@ class MainController extends Controller
         }
         return view('pages.movie_watch', [
             'movie' => Movie::find($request->movie_id),
-            'other' => Movie::all()->except(['movie_id', $request->movie_id])->take(5)
+            'other' => Movie::all()->except(['movie_id', $request->movie_id])->take(7)
         ]);
     }
 }

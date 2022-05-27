@@ -49,6 +49,7 @@ Route::middleware('auth')->get('/playlist/{playlist_id}', [MainController::class
 Route::get('/playlist/{playlist_id}/movies', [MainController::class,'playlist_movies'])->name('playlist_movies');
 
 
+
 Route::prefix('account')->group(function(){
 
     Route::get('login', function(){
@@ -67,6 +68,10 @@ Route::prefix('account')->group(function(){
         return view('pages.signs.account_upgrade');
     })->name('account/account_upgrade');
 
+});
+
+Route::middleware('auth')->group(function(){
+    Route::post('comment.create/{id}',[CommentController::class, 'store'])->name('comment.store');
 });
 
 Route::middleware('auth')->get('account_upgrade', [MainController::class, 'account_upgrade'])->name('account_upgrade');

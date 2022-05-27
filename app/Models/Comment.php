@@ -21,4 +21,6 @@ class Comment extends Model
         return $this->morphOne(Comment::class , "commentable");
     }
 
+    protected $fillable = ['user_id', 'content', 'commentable_id', 'commentable_type'];
+
 }
