@@ -28,12 +28,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="anime__video__player" style="height: 70%">
-                        <video id="player" playsinline controls data-poster="{{ asset('videos/anime-watch.jpg') }}">
-                            <source src="{{ asset('videos/1.mp4') }}" type="video/mp4" />
+                    <div class="anime__video__player" style="height: 60%">
+                        <video id="player" playsinline controls>
+                            <source src="{{ asset('videos/1.mp4') }}#t=0.2" type="video/mp4" />
                             <!-- Captions are optional -->
                             <track kind="captions" label="English captions" src="#" srclang="en" default />
                         </video>
+                    </div>
+                    <div class="anime__details__form title_margin">
+                        <div class="section-title">
+                        <form method="POST" action="{{ route('playlists_movie.store', $movie->id) }}">
+                            @csrf
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <button type="submit"><i class="fa fa-love"></i>Add to my playlist</button>
+                        </form>
+                        </div>
                     </div>
                     <div class="anime__details__episodes">
                         <div class="section-title">

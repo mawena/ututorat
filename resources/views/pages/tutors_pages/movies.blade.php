@@ -6,6 +6,11 @@
 
 @section('content')
 
+    @empty($movie)
+    <div style="margin-bottom: 11%">
+        @include('pages.parts.blank_place')
+    </div>
+    @endempty
     <!-- Anime Section Begin -->
     <section class="anime-details spad">
         <div class="container">

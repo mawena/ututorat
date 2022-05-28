@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Playlists_movie;
 use App\Http\Controllers\Controller;
+use App\Models\Tutors_playlist;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -187,14 +188,20 @@ class MainController extends Controller
     public function playlists()
     {
         return view('pages.playlist.playlists', [
-            'playlists' => Playlist::all()->sortBy('created_at'),
+            'playlists' => Tutors_playlist::all()->sortBy('created_at'),
         ]);
     }
 
     public function playlist()
     {
+        $user = User::find(Auth::user()->id);
+        $movies = [];
+        if ($user->playlist != null)
+            foreach (Playlists_movie::all()->where('playlist_id', $user->playlist->id) as $playlist_movie) {
+                $movies[] = ($playlist_movie->movie);
+            }
         return view('pages.playlist.playlist', [
-            'movies' => Playlists_movie::all()->where('user_id', Auth::user()->id),
+            'movies' => $movies,
         ]);
     }
 
@@ -252,5 +259,4 @@ class MainController extends Controller
             'other' => Movie::all()->except(['movie_id', $request->movie_id])->take(7)
         ]);
     }
-
 }

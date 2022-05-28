@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Playlists_movie;
+use App\Models\User;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
+use App\Models\Playlists_movie;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PlaylistsMovieController extends Controller
 {
@@ -35,7 +40,28 @@ class PlaylistsMovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $playlists_movie = Playlists_movie::all()
+            ->where('user_id', Auth::user()->id)
+            ->where('movie_id', $request->movie_id);
+        if (count($playlists_movie) == 0) {
+            $playlist_id = 0;
+            $playlist = Playlist::all()->where('user_id', Auth::user()->id);
+            if (count($playlist) == 0) {
+                $playlist = Playlist::create([
+                    'user_id' => Auth::user()->id,
+                    'title' => '-',
+                    'description' => '-',
+                ]);
+                $playlist_id = $playlist->id;
+            }else{
+                $playlist_id = User::find(Auth::user()->id)->playlist->id;
+            }
+            Playlists_movie::create([
+                'playlist_id' => $playlist_id,
+                'movie_id' => $request->movie_id
+            ]);
+        }
+        return redirect(route('watch', $request->movie_id));
     }
 
     /**

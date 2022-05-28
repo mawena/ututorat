@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\TutorPagesController;
+use App\Http\Controllers\PlaylistsMovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +73,11 @@ Route::prefix('account')->group(function(){
 });
 
 Route::middleware('auth')->group(function(){
+
     Route::post('comment.create/{id}',[CommentController::class, 'store'])->name('comment.store');
+
+    Route::post('playlist.create/{movie_id}',[PlaylistsMovieController::class, 'store'])->name('playlists_movie.store');
+
 });
 
 Route::middleware('auth')->get('account_upgrade', [MainController::class, 'account_upgrade'])->name('account_upgrade');
@@ -92,15 +97,10 @@ Route::middleware('tutor')->prefix('tutor_dashboard')->group(function(){
     })->name('teach_the_world/movie_form');
 
     Route::get('/teach_the_world/create_a_playlist', [TutorPagesController::class, 'add_playlist'])->name('teach_the_world/playlist_form');
+
+    Route::post('movie.create', [MovieController::class, 'store'])->name('movie.create');
+
 });
-
-Route::middleware('auth')->post('comment.create/{movie_id}',[CommentController::class, 'store'])->name('comment.store');
-
-Route::resource('File',FileController::class);
-
-Route::resource('Movie',MovieController::class);
-
-Route::resource('Playlist',PlaylistController::class);
 
 Auth::routes();
 

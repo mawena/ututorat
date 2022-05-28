@@ -20,4 +20,8 @@
     </section>
     <!-- Anime Section End -->
 
+    <div style="margin-bottom: 11%">
+        @include('pages.parts.blank_place')
+    </div>
+
 @endsection

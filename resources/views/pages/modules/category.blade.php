@@ -7,9 +7,11 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="btn__all">
+                @if(isset($all) && $all)
                 @if(!Str::contains(url()->current(), '/all'))
                 <a href="{{ route('category_view_all',Str::lower($category['name'])) }}" class="primary-btn">View All <span
                         class="arrow_right"></span></a>
+                @endif
                 @endif
             </div>
         </div>

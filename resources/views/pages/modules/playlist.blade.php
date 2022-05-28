@@ -2,7 +2,7 @@
 <div class="anime__details__content">
     <div class="row">
         <div class="col-lg-{{ $alone ? 4 : 5 }}" style="margin-left: 16px">
-            <div class="anime__details__pic set-bg" data-setbg="{{ asset('img/anime/details-pic.jpg') }}">
+            <div class="anime__details__pic set-bg" data-setbg="{{ asset('img/trending/play.png') }}">
             </div>
         </div>
         <div class="col-lg-6">
