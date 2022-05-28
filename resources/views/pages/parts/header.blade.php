@@ -25,8 +25,20 @@
                                 <li @if (Route::is('movies')) class='active' @endif>
                                     <a href="{{ route('movies', 1) }}">My movies</a>
                                 </li>
-                                <li @if (Route::is('teach_the_world')) class='active' @endif>
-                                    <a href="{{ route('teach_the_world', 1) }}">Teach the world</a>
+                                <li @if (Str::contains(url()->current(), "teach_the_world")) class='active' @endif>
+                                    <a>Teach the world</a>
+                                    <ul class="dropdown">
+                                        <li @if (Route::is('teach_the_world/movie_form')) echo style="background: #E53637" @endif>
+                                            <a href="{{ route('teach_the_world/movie_form') }}">
+                                                Add a movie
+                                            </a>
+                                        </li>
+                                        <li @if (Route::is('teach_the_world/playlist_form')) echo style="background: #E53637" @endif>
+                                            <a href="{{ route('teach_the_world/playlist_form') }}">
+                                                Create a playlist
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         @else
@@ -37,41 +49,37 @@
                                     <a href="{{ route('categories') }}">Categories<span
                                             class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li @if (Route::is('categories')) echo class='dropdown_active_item' @endif>
+                                        <li @if (Route::is('categories')) echo style="background: #E53637" @endif>
                                             <a href="{{ route('categories') }}">All Categories</a>
                                         </li>
-                                        <li @if (Route::is('programmation')) echo class='dropdown_active_item' @endif>
+                                        <li @if (Route::is('programmation')) echo style="background: #E53637" @endif>
                                             <a href="{{ route('programmation') }}">Programmation</a>
                                         </li>
-                                        <li @if (Route::is('personnal_development')) echo class='dropdown_active_item' @endif>
+                                        <li @if (Route::is('personnal_development')) echo style="background: #E53637" @endif>
                                             <a href="{{ route('personnal_development') }}">Personnal development</a>
                                         </li>
-                                        <li
-                                            @if (Route::is('right')) echo class='dropdown_active_item' @endif>
+                                        <li @if (Route::is('right')) echo style="background: #E53637" @endif>
                                             <a href="{{ route('right') }}">Right</a>
                                         </li>
-                                        <li
-                                            @if (Route::is('tech')) echo class='dropdown_active_item' @endif>
+                                        <li @if (Route::is('tech')) echo style="background: #E53637" @endif>
                                             <a href="{{ route('tech') }}">Tech</a>
                                         </li>
-                                        <li
-                                            @if (Route::is('oratorical_art')) echo class='dropdown_active_item' @endif>
+                                        <li @if (Route::is('oratorical_art')) echo style="background: #E53637" @endif>
                                             <a href="{{ route('oratorical_art') }}">Oratorical Art</a>
                                         </li>
-                                        <li
-                                            @if (Route::is('other')) echo class='dropdown_active_item' @endif>
+                                        <li @if (Route::is('other')) echo style="background: #E53637" @endif>
                                             <a href="{{ route('other') }}">Other</a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li @if (Route::is('playlists')) echo class='active' @endif>
+                                <li @if (Route::is('playlists')) echo style="background: #E53637" @endif>
                                     <a href="{{ route('playlists') }}">Playlists</a>
                                 </li>
-                                <li @if (Route::is('playlist')) echo class='active' @endif>
+                                <li @if (Route::is('playlist')) echo style="background: #E53637" @endif>
                                     <a href="{{ route('playlist', 2) }}">My Playlist</a>
                                 </li>
                                 @if (false)
-                                    <li @if (Route::is('activities')) echo class='active' @endif>
+                                    <li @if (Route::is('activities')) echo style="background: #E53637" @endif>
                                         <a href="{{ route('activities', 2) }}">My Activities</a>
                                     </li>
                                 @endif
@@ -97,7 +105,7 @@
                                 @auth
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+                                                    document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -108,7 +116,7 @@
                                     @if (Auth::user()->isTutor)
                                         <li>
                                             <a href="{{ route('activities') }}">
-                                                Your dashboard
+                                                Tutor dashboard
                                             </a>
                                         </li>
                                     @else
@@ -120,10 +128,10 @@
                                     @endif
                                 @endauth
                                 @guest
-                                    <li @if (Route::is('login')) echo class='dropdown_active_item' @endif>
+                                    <li @if (Route::is('login')) echo style="background: #E53637" @endif>
                                         <a href="{{ route('account/login') }}">Login</a>
                                     </li>
-                                    <li @if (Route::is('register')) echo class='dropdown_active_item' @endif>
+                                    <li @if (Route::is('register')) echo style="background: #E53637" @endif>
                                         <a href="{{ route('account/register') }}">Register</a>
                                     </li>
                                 @endguest

@@ -1,3 +1,4 @@
+@if($playlist == null)
 <div class="anime__details__content">
     <div class="row">
         <div class="col-lg-{{ $alone ? 4 : 5 }}" style="margin-left: 16px">
@@ -31,3 +32,4 @@
         </div>
     </div>
 </div>
+@endif

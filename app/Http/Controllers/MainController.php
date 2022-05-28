@@ -252,4 +252,5 @@ class MainController extends Controller
             'other' => Movie::all()->except(['movie_id', $request->movie_id])->take(7)
         ]);
     }
+
 }

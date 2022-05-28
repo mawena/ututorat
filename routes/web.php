@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\TutorPagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,22 +81,17 @@ Route::middleware('auth')->get('watch/{movie_id}',[MainController::class, 'watch
 
 Route::middleware('tutor')->prefix('tutor_dashboard')->group(function(){
 
-    Route::get('/', function(){
-        return view('pages.tutors_pages.activities');
-    })->name('activities');
+    Route::get('/', [TutorPagesController::class,'activities'])->name('activities');
 
-    Route::get('/movies', function(){
-        return view('pages.tutors_pages.movies');
-    })->name('movies');
+    Route::get('/movies', [TutorPagesController::class,'movies'])->name('movies');
 
-    Route::get('/playlists', function(){
-        return view('pages.tutors_pages.playlists');
-    })->name('tutor_playlists');
+    Route::get('/playlists', [TutorPagesController::class,'playlists'])->name('tutor_playlists');
 
-    Route::get('/teach_the_world', function(){
-        return view('pages.tutors_pages.teach_the_world');
-    })->name('teach_the_world');
+    Route::get('/teach_the_world/add_a_movie', function(){
+        return view('pages.tutors_pages.movie_form');
+    })->name('teach_the_world/movie_form');
 
+    Route::get('/teach_the_world/create_a_playlist', [TutorPagesController::class, 'add_playlist'])->name('teach_the_world/playlist_form');
 });
 
 Route::middleware('auth')->post('comment.create/{movie_id}',[CommentController::class, 'store'])->name('comment.store');
