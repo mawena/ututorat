@@ -1,11 +1,11 @@
 @extends('app')
 
-@include('pages.parts.header', ['is_tutor_page' => false])
 
 @section('title', 'Become a tutor')
 
 @section('content')
-    <!-- Login Section Begin -->
+@include('pages.parts.header', ['is_tutor_page' => false])
+<!-- Login Section Begin -->
     <section class="login spad">
         <div class="container">
             <div class="row">

@@ -1,11 +1,11 @@
 @extends('app')
 
-@include('pages.parts.header', ['is_tutor_page' => true])
 
 @section('title', 'Create a playlist')
 
 @section('content')
 
+@include('pages.parts.header', ['is_tutor_page' => true])
     @if (empty($movies[0]))
 
         <div class="container title_margin" style="margin-bottom: 14%">

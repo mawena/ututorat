@@ -1,18 +1,18 @@
 @extends('app')
 
-@include('pages.parts.header', ['is_tutor_page'=> false])
 
 @section('title', 'Categories')
 
 @section('content')
 
+@include('pages.parts.header', ['is_tutor_page'=> false])
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="{{ route('home') }}><i class="fa fa-home"></i> Home</a>
+                        <a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a>
                         <span>Categories</span>
                     </div>
                 </div>

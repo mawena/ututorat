@@ -1,12 +1,12 @@
 @extends('app')
 
-@include('pages.parts.header', ['is_tutor_page' => false])
 
 @section('title', 'Personnal playlist')
 
 @section('content')
 
-    <div class="container title_margin">
+@include('pages.parts.header', ['is_tutor_page' => false])
+<div class="container title_margin">
         <div class="section-title">
             <h5>Your playlist</h5>
             @empty($movies[0])

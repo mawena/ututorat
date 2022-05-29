@@ -1,11 +1,11 @@
 @extends('app')
 
-@include('pages.parts.header', ['is_tutor_page'=> false])
 
 @section('title', 'Playlists')
 
 @section('content')
 
+@include('pages.parts.header', ['is_tutor_page'=> false])
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
         <div class="container">

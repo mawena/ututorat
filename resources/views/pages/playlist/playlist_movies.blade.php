@@ -1,11 +1,11 @@
 @extends('app')
 
-@include('pages.parts.header', ['is_tutor_page' => false])
 
 @section('title', 'Personnal playlist')
 
 @section('content')
 
+@include('pages.parts.header', ['is_tutor_page' => false])
     <!-- Normal Breadcrumb Begin -->
     <section class="normal-breadcrumb set-bg" data-setbg="{{ asset('img/normal-breadcrumb.jpg') }}">
         <div class="container">

@@ -1,11 +1,11 @@
 @extends('app')
 
-@include('pages.parts.header', ['is_tutor_page' => true])
 
 @section('title', 'Created movies')
 
 @section('content')
 
+@include('pages.parts.header', ['is_tutor_page' => true])
     @empty($movie)
     <div style="margin-bottom: 11%">
         @include('pages.parts.blank_place')

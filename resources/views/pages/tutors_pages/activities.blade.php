@@ -2,10 +2,10 @@
 
 @section('title', 'Your activities')
 
-@include('pages.parts.header', ['is_tutor_page'=> true])
 
 @section('content')
 
+@include('pages.parts.header', ['is_tutor_page'=> true])
     <section class="normal-breadcrumb set-bg">
         <div class="container">
             <div class="row">

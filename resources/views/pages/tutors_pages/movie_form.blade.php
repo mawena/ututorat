@@ -1,11 +1,11 @@
 @extends('app')
 
-@include('pages.parts.header', ['is_tutor_page' => true])
 
 @section('title', 'Add a movie')
 
 @section('content')
 
+@include('pages.parts.header', ['is_tutor_page' => true])
     <div class="container anime__details__form">
         <form method="POST" action="{{ route('movie.create') }}" enctype="multipart/form-data">
             @if ($errors->any())
