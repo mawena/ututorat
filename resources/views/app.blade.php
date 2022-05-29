@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
     <meta name="keywords" content="tutorat, teach, learn, html">
-    <meta name="robots" content="index, follow"/>
+    <meta name="robots" content="index, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield("title") | UTutorat</title>
+    <title>@yield('title') | UTutorat</title>
 
     <!-- Google Font -->
-    <link href="{{ asset('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap') }}" rel="stylesheet">
-    <link href="{{ asset('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap') }}"
+    <link href="{{ asset('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap') }}"
+        rel="stylesheet">
+    <link
+        href="{{ asset('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap') }}"
         rel="stylesheet">
 
     <!-- Css Styles -->
@@ -25,6 +27,19 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FVFHSLCHGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FVFHSLCHGD');
+    </script>
 </head>
 
 <body>
@@ -53,8 +68,8 @@
                         <ul>
                             <li><a href="{{ route('home') }}">Homepage</a></li>
                             <li><a href="{{ route('categories') }}">Categories</a>
-                            <li><a href="{{ route('playlists',2) }}">Playlists</a></li>
-                            <li><a href="{{ route('playlist',2) }}">My Playlist</a></li>
+                            <li><a href="{{ route('playlists', 2) }}">Playlists</a></li>
+                            <li><a href="{{ route('playlist', 2) }}">My Playlist</a></li>
                         </ul>
                     </div>
                 </div>
