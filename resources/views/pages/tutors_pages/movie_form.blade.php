@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="container anime__details__form">
-        <form method="POST" action="{{ route('movie.create') }}">
+        <form method="POST" action="{{ route('movie.create') }}" enctype="multipart/form-data">
             @if ($errors->any())
                 <div class="alert alert-danger title_margin">
                     <ul>
@@ -36,22 +36,22 @@
                 <h5>Choose the movie's category</h5>
             </div>
             <div class="input__item">
-                <input type="radio" name="category" value="{{ old('programmation') }}" value="1" id="programmation" />
+                <input type="radio" name="category" value="1" id="programmation" />
                 <label for="programmation" style="color: white; font-size: larger; margin-right:30px">Programmation</label>
 
-                <input type="radio" name="category" value="{{ old('Personnal Development') }}" value="2" id="Personnal Development" />
+                <input type="radio" name="category" value="2" id="Personnal Development" />
                 <label for="Personnal Development" style="color: white; font-size: larger; margin-right:30px">Personnal Development</label>
 
-                <input type="radio" name="category" value="{{ old('Right') }}" value="3" id="Right" />
+                <input type="radio" name="category" value="3" id="Right" />
                 <label for="Right" style="color: white; font-size: larger; margin-right:30px">Right</label>
 
-                <input type="radio" name="category" value="{{ old('Tech') }}" value="4" id="Tech" />
+                <input type="radio" name="category" value="4" id="Tech" />
                 <label for="Tech" style="color: white; font-size: larger; margin-right:30px">Tech</label>
 
-                <input type="radio" name="category" value="{{ old('Oratorical Art') }}" value="5" id="Oratorical Art" />
+                <input type="radio" name="category" value="5" id="Oratorical Art" />
                 <label for="Oratorical Art" style="color: white; font-size: larger; margin-right:30px">Oratorical Art</label>
 
-                <input type="radio" name="category" value="{{ old('Other') }}" value="6" id="Other" checked />
+                <input type="radio" name="category" value="6" id="Other" checked />
                 <label for="Other" style="color: white; font-size: larger; margin-right:30px">Other</label>
             </div>
             <div class="section-title title_margin">

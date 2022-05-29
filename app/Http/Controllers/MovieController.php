@@ -44,13 +44,12 @@ class MovieController extends Controller
         $validated = $request->validate([
             'title' => 'required|min:3|max:100',
             'description' => 'required|min:3|max:300',
-            // 'image' => 'required|mimes:jpg,jpeg,png',
-            // 'movie' => 'required|mimes:mp4,avi,mkw|max:30720',
-        ]);
+            'image' => 'required|image|max:2048',
+            'movie' => 'required|mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
+            ]);
         $user = User::find(Auth::user()->id);
-        $path = Storage::putFile(
-            'movie/'.$user->id, $request->file('movie')->movie
-        );
+        // dd($request->input('category'));
+        $path = $request->file('movie')->store('videos'.$request->title, ['disk' => 'movies']);
         $movie = Movie::create([
             'user_id' => $user->id,
             'title' => $request->title,
@@ -58,9 +57,7 @@ class MovieController extends Controller
             'description' => $request->description,
             'path' => $path
         ]);
-        $path = Storage::putFile(
-            'image/'.$user->id, $request->file('image')->image
-        );
+        $path = $request->file('image')->store('images'.$request->title, ['disk' => 'images']);
         Image::create([
             'path' => $path,
             'imageable_id' => $movie->id,

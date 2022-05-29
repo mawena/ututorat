@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("path")->default('img/profiles/default.jpg');
             $table->integer("imageable_id");
-            $table->string("imageeable_type");
+            $table->string("imageable_type");
             $table->timestamps();
         });
     }

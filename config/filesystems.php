@@ -56,6 +56,16 @@ return [
             'throw' => false,
         ],
 
+        'movies' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/movies'
+        ],
+        
+        'images' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/img'
+        ],
+
     ],
 
     /*

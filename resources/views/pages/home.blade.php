@@ -1,11 +1,10 @@
 @extends('app')
 
-@include('pages.parts.header', ['is_tutor_page' => false])
-
 @section('title', 'Home')
 
 @section('content')
 
+    @include('pages.parts.header', ['is_tutor_page' => false])
     <!-- Product Section Begin -->
     <section class="product spad">
         <div class="container">
