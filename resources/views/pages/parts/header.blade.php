@@ -99,7 +99,7 @@
                                 <a><span class="icon_profile"></span>{{ Auth::user()->name }}</a>
                             @endauth
                             @guest
-                                <a href="{{ route('login') }}"><span class="icon_profile"></span>Account</a>
+                                <a href="{{ route('account/login') }}"><span class="icon_profile"></span>Account</a>
                             @endguest
                             <ul class="dropdown">
                                 @auth
