@@ -61,7 +61,7 @@ class MovieController extends Controller
         Image::create([
             'path' => $path,
             'imageable_id' => $movie->id,
-            'imageable_type' => '\App\Models\Movie'
+            'imageable_type' => 'App\Models\Movie'
         ]);
         return redirect(route('teach_the_world/movie_form'));
 

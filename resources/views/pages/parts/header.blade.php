@@ -19,9 +19,6 @@
                                 <li @if (Route::is('activities')) class='active' @endif>
                                     <a href="{{ route('activities', 1) }}">Acitivities</a>
                                 </li>
-                                <li @if (Route::is('tutor_playlists')) class='active' @endif>
-                                    <a href="{{ route('tutor_playlists', 1) }}">My Playlists</a>
-                                </li>
                                 <li @if (Route::is('movies')) class='active' @endif>
                                     <a href="{{ route('movies', 1) }}">My movies</a>
                                 </li>
@@ -31,11 +28,6 @@
                                         <li @if (Route::is('teach_the_world/movie_form')) echo style="background: #E53637" @endif>
                                             <a href="{{ route('teach_the_world/movie_form') }}">
                                                 Add a movie
-                                            </a>
-                                        </li>
-                                        <li @if (Route::is('teach_the_world/playlist_form')) echo style="background: #E53637" @endif>
-                                            <a href="{{ route('teach_the_world/playlist_form') }}">
-                                                Create a playlist
                                             </a>
                                         </li>
                                     </ul>
@@ -71,9 +63,6 @@
                                             <a href="{{ route('other') }}">Other</a>
                                         </li>
                                     </ul>
-                                </li>
-                                <li @if (Route::is('playlists')) echo style="background: #E53637" @endif>
-                                    <a href="{{ route('playlists') }}">Playlists</a>
                                 </li>
                                 <li @if (Route::is('playlist')) echo style="background: #E53637" @endif>
                                     <a href="{{ route('playlist', 2) }}">My Playlist</a>

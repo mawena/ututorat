@@ -30,7 +30,7 @@
                 <div class="col-lg-12">
                     <div class="anime__video__player" style="height: 60%">
                         <video id="player" playsinline controls>
-                            <source src="{{ asset('videos/1.mp4') }}#t=0.2" type="video/mp4" />
+                            <source src="{{ asset('movies/'.$movie->path) }}#t=0.2" type="video/mp4" />
                             <!-- Captions are optional -->
                             <track kind="captions" label="English captions" src="#" srclang="en" default />
                         </video>

@@ -26,11 +26,6 @@ class MainController extends Controller
                     'data' => Movie::all()->sortBy('created_at')->take(7)
                 ],
                 [
-                    'name' => 'new playlists',
-                    'data' => Playlist::all()->sortBy('created_at')->take(5),
-                    'alone' => false
-                ],
-                [
                     'name' => 'recently updated',
                     'data' => Movie::all()->sortBy('updated_at')->take(7)
                 ],

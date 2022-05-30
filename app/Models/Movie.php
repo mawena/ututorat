@@ -45,4 +45,7 @@ class Movie extends Model
         return $this->belongsTo(Playlist_movie::class);
     }
 
+    public function image(){
+        return $this->morphOne(Image::class, "imageable");
+    }
 }
