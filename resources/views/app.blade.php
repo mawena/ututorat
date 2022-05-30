@@ -49,7 +49,7 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
+    
     @yield('content')
 
     <!-- Footer Section Begin -->

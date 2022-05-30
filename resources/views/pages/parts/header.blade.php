@@ -133,6 +133,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         {{-- <h1 style="color: white; font-size: 50px" class="center">@yield('title')</h1> --}}
+        <h1 style="color: white; font-size: 50px; text-align: center;">@yield('title')</h1>
     </div>
 </header>
 <!-- Header End -->

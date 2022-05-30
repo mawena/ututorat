@@ -54,20 +54,12 @@
                             </div>
                             <button type="submit" class="site-btn">Login Now</button>
                         </form>
-                        <h5>Already have an account? <a href="{{ route('account/login') }}">Log In!</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="login__social__links">
-                        <h3>Login With:</h3>
-                        <ul>
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
-                            </li>
-                            <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a>
-                            </li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a>
-                            </li>
-                        </ul>
+                    <div class="login__register">
+                        <h3>Already have an account?</h3>
+                        <a href="{{ route('account/login') }}" class="primary-btn">Log In!</a>
                     </div>
                 </div>
             </div>
