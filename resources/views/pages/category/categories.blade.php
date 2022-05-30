@@ -5,7 +5,7 @@
 
 @section('content')
 
-    @include('pages.parts.header', ['is_tutor_page' => false])
+@include('pages.parts.header', ['is_tutor_page'=> false])
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
         <div class="container">
@@ -26,9 +26,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    @foreach ($categories as $category)
-                        @include('pages.modules.category', ['category' => $category])
-                    @endforeach
+                @foreach ($categories as $category)
+                    @include('pages.modules.category', ['category' => $category])
+                @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-8">
                     <div class="product__sidebar">
@@ -37,7 +37,7 @@
                                 <h5>Random movies</h5>
                             </div>
                             @foreach ($randoms['movies'] as $movie)
-                                @include('pages.modules.additionnal_movie', ['movie' => $movie])
+                                    @include('pages.modules.additionnal_movie', ['movie' => $movie])
                             @endforeach
                         </div>
                     </div>

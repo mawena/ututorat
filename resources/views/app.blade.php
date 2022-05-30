@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
-    <meta name="keywords" content="tutorat, teach, learn, html">
+    <meta name="keywords" content="tutorat, teach, learn, playlist, movie, html">
     <meta name="robots" content="index, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -43,6 +43,7 @@
 </head>
 
 <body>
+    
 
     <!-- Page Preloder -->
     <div id="preloder">
